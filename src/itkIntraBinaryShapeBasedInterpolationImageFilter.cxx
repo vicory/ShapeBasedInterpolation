@@ -1,21 +1,20 @@
-/*============================================================================
-  Program:    Insight Segmentation & Registration Toolkit
-  Language:   C++
-  Date:       june 2012
-  
-  Authors belong to:
-  - Ecole Polytechnique Fédérale de Lausanne STI-IEL-LTS5                  http://lts5www.epfl.ch
-  - Université de Valenciennes et du Hainaut-Cambrésis - LAMIH, CNRS       http://www.univ-valenciennes.fr/LAMIH/
-  Contact: christine.boydev@epfl.ch
-
-  Copyright (c) Insight Software Consortium. All rights reserved.
-  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
-
-  This software is distributed WITHOUT ANY WARRANTY; without even the implied 
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-  See the copyright notices for more information.
- ============================================================================*/
-
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 #include "itkIntraBinaryShapeBasedInterpolationImageFilter.h"
 #include <itkLinearInterpolateImageFunction.h>
 
@@ -103,7 +102,7 @@ void IntraBinaryShapeBasedInterpolationImageFilter::FindZCoordinatesOfDelineated
 }
   
 void IntraBinaryShapeBasedInterpolationImageFilter::GenerateIntermediateImageInformation()
-{    
+{ 
   std::cout << "Appel fonction GenerateIntermediateImageInformation()" << std::endl;
   InputImageConstPointer inputImage = this->GetInput();
      
@@ -162,7 +161,7 @@ void IntraBinaryShapeBasedInterpolationImageFilter::GenerateOutputInformation()
   Superclass::GenerateOutputInformation();
       
   // get pointers to the input and output
-  InputImageConstPointer inputImage = this->GetInput();     
+  InputImageConstPointer inputImage = this->GetInput(); 
   OutputImagePointer outputImage = this->GetOutput();
   if ( !inputImage || !outputImage )
     {
@@ -259,7 +258,7 @@ void IntraBinaryShapeBasedInterpolationImageFilter::GenerateData()
   m_ResampleFilter->SetSize( outputSize ); 
   m_ResampleFilter->SetOutputSpacing( outputSpacing ); 
   m_ResampleFilter->SetOutputOrigin( inputOrigin ); 
-  m_ResampleFilter->Update();    
+  m_ResampleFilter->Update(); 
     
   IntermediateRegionItType itr( m_ResampleFilter->GetOutput(), m_ResampleFilter->GetOutput()->GetLargestPossibleRegion() );
 

@@ -1,21 +1,20 @@
-/*============================================================================
-  Program:    Insight Segmentation & Registration Toolkit
-  Language:   C++
-  Date:       june 2012
-  
-  Authors belong to:
-  - Ecole Polytechnique Fédérale de Lausanne STI-IEL-LTS5                  http://lts5www.epfl.ch
-  - Université de Valenciennes et du Hainaut-Cambrésis - LAMIH, CNRS       http://www.univ-valenciennes.fr/LAMIH/
-  Contact: christine.boydev@epfl.ch
-
-  Copyright (c) Insight Software Consortium. All rights reserved.
-  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
-
-  This software is distributed WITHOUT ANY WARRANTY; without even the implied 
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-  See the copyright notices for more information.
-============================================================================*/
-
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 #include "itkInterBinaryShapeBasedInterpolationImageFilter.h"
 #include <itkLinearInterpolateImageFunction.h>
 
@@ -26,7 +25,7 @@ namespace itk
    */
 InterBinaryShapeBasedInterpolationImageFilter::InterBinaryShapeBasedInterpolationImageFilter()
 {
-  m_DelineationRatio = 3;    
+  m_DelineationRatio = 3; 
   m_DelineationZCoordinateArray.clear();
     
   m_IntermediateImage = IntermediateImageType::New();
@@ -108,7 +107,7 @@ void InterBinaryShapeBasedInterpolationImageFilter::FindZCoordinatesOfDelineated
   
   
 void InterBinaryShapeBasedInterpolationImageFilter::GenerateIntermediateImageInformation()
-{    
+{ 
   std::cout << "Appel fonction GenerateIntermediateImageInformation()" << std::endl;
   InputImageConstPointer inputImage = this->GetInput();
      
@@ -151,7 +150,7 @@ void InterBinaryShapeBasedInterpolationImageFilter::GenerateIntermediateImageInf
   m_IntermediateImage->SetRegions( intermediateRegion );
   m_IntermediateImage->SetSpacing( intermediateSpacing );
   m_IntermediateImage->SetOrigin( intermediateOrigin );
-  m_IntermediateImage->Allocate();    
+  m_IntermediateImage->Allocate(); 
 }
   
 
@@ -189,7 +188,7 @@ void InterBinaryShapeBasedInterpolationImageFilter::GenerateData()
     
   // Resample the m_IntermediateImage   
   m_SliceBySliceFilter->SetFilter( m_DistanceMapImageFilter );
-  m_SliceBySliceFilter->SetInput( m_IntermediateImage );    
+  m_SliceBySliceFilter->SetInput( m_IntermediateImage ); 
     
   m_ResampleFilter->SetInput( m_SliceBySliceFilter->GetOutput() );
   m_ResampleFilter->SetTransform( m_Transform );

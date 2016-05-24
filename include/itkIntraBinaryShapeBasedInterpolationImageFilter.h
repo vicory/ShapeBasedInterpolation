@@ -1,24 +1,22 @@
-/*===========================================================================
-  Program:    Insight Segmentation & Registration Toolkit
-  Language:   C++
-  Date:       june 2012
-
-  Authors belong to:
-  - Ecole Polytechnique Fédérale de Lausanne STI-IEL-LTS5                  http://lts5www.epfl.ch
-  - Université de Valenciennes et du Hainaut-Cambrésis - LAMIH, CNRS       http://www.univ-valenciennes.fr/LAMIH/
-  Contact: christine.boydev@epfl.ch
-  Please email with any bugs or suggestions.
-
-  Copyright (c) Insight Software Consortium. All rights reserved.
-  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
-
-  This software is distributed WITHOUT ANY WARRANTY; without even the implied
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the copyright notices for more information.
-=============================================================================*/
-
-#ifndef __itkIntraBinaryShapeBasedInterpolationImageFilter_h
-#define __itkIntraBinaryShapeBasedInterpolationImageFilter_h
+/*=========================================================================
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
+#ifndef itkIntraBinaryShapeBasedInterpolationImageFilter_h
+#define itkIntraBinaryShapeBasedInterpolationImageFilter_h
 
 #include <itkImageToImageFilter.h>
 #include <itkImage.h>
@@ -37,6 +35,7 @@
 namespace itk
 {
 /** \class IntraBinaryShapeBasedInterpolationImageFilter
+  * \ingroup ShapeBasedInterpolation
   * \brief Interpolates  a 3D segmented binary image wherein all slices are segmented.
   * This filter takes as input a 3D binary image wherein the object of
   * interest is represented in full, that is, on all contiguous slices
@@ -174,7 +173,7 @@ private:
   // delineated slices in the input image (i.e. before interpolation)
   std::vector< int >                      m_DelineationZCoordinateArray;
   IntermediateImagePointer                m_IntermediateImage;
-  InterpolatorType::Pointer      m_Interpolator;
+  InterpolatorType::Pointer               m_Interpolator;
 };
 } // end namespace itk
 #endif  // #define __itkIntraBinaryShapeBasedInterpolationImageFilter_h
